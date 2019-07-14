@@ -1,8 +1,17 @@
 package com.julyjpabatch.julyjpa.model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+//@Data
+//@Getter
+//@Setter
 @Entity
 public class Product {
 
@@ -11,6 +20,10 @@ public class Product {
 
     private String productName;
     private String price;
+
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    private Category category;
 
     public Integer getId() {
         return id;
@@ -34,5 +47,13 @@ public class Product {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
